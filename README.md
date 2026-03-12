@@ -79,7 +79,7 @@ favorite_products/
 ## 👤 Author
 
 **Oumas** — [github.com/oumas3](https://github.com/oumas3)
-**ELater Khaoula** — [github.com/oumas3](https://github.com/ELATER-KHAOULA)
+**ELater Khaoula** — [github.com/ELATER-KHAOULA](https://github.com/ELATER-KHAOULA)
 
 
 
