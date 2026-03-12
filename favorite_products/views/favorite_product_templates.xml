@@ -1,0 +1,73 @@
+<odoo>
+    <!-- PAGE /my/favorites -->
+    <template id="portal_favorite_products" name="Produits Favoris">
+        <t t-name="favorite_products.portal_favorite_products">
+            <t t-call="website.layout">
+                <div class="container mt-4 mb-4">
+                    <h2>Mes Produits Favoris</h2>
+                    <div class="row">
+                        <t t-foreach="favorites" t-as="fav">
+                            <div class="col-md-4 mb-3">
+                                <div class="card shadow">
+                                    <t t-if="fav.product_tmpl_id.image_1920">
+                                        <img t-att-src="'data:image/png;base64,%s' % fav.product_tmpl_id.image_1920.decode('utf-8')" class="card-img-top"/>
+                                    </t>
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <t t-esc="fav.product_tmpl_id.name"/>
+                                        </h5>
+                                        <p class="card-text">
+                                            Prix : <t t-esc="fav.product_tmpl_id.list_price"/> €
+                                        </p>
+                                        <p class="card-text text-muted">
+                                            Quantité disponible : <t t-esc="fav.product_tmpl_id.qty_available"/>
+                                        </p>
+                                        <a t-att-href="'/shop/product/%d' % fav.product_tmpl_id.id" class="btn btn-info mr-2" target="_blank">
+                                            Voir dans le Shop
+                                        </a>
+                                        <form t-att-action="'/my/favorites/remove?product_id=%d' % fav.product_tmpl_id.id" method="post" class="d-inline">
+                                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                            <button class="btn btn-danger" type="submit">Supprimer</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+
+                    <div class="mt-4">
+                        <h3>Ajouter un produit aux favoris</h3>
+                        <form action="/my/favorites/add" method="post">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="form-group">
+                                <label for="product_select">Sélectionner un produit</label>
+                                <select name="product_id" id="product_select" class="form-control">
+                                    <t t-foreach="products" t-as="product">
+                                        <option t-att-value="product.id">
+                                            <t t-esc="product.name"/>
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Ajouter aux favoris</button>
+                        </form>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <!-- ésolution du problème de layout dans le portail
+Dans le cadre du développement du module, un souci d’affichage a été identifié au niveau de la page du portail destinée aux produits favoris. Plus précisément, la page n’affichait pas correctement la structure et le contenu attendu pour chaque utilisateur.
+
+Pour corriger cela, un fichier de template XML a été introduit. Ce fichier définit précisément la structure HTML de la page /my/favorites en héritant du layout standard du portail (website.layout). Il permet notamment :
+
+d'encadrer les produits favoris dans un conteneur visuellement cohérent avec le reste du site,
+
+de gérer dynamiquement l’affichage des produits avec leurs informations (image, prix, quantité),
+
+d’inclure les formulaires d’ajout et de suppression avec une structure claire et fonctionnelle.
+
+Ce fichier a donc joué un rôle central pour rétablir une expérience utilisateur fluide et bien intégrée au reste du portail Odoo, en résolvant les limites initiales liées au layout. -->
+   
+</odoo>

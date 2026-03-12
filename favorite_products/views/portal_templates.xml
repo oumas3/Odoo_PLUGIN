@@ -1,0 +1,49 @@
+<odoo>
+  <template id="favorite_products.template_portal_favorites" name="Produits Favoris">
+    <t t-call="portal.portal_layout">
+      <div class="container mt-4">
+        <h2>Mes Produits Favoris</h2>
+        <t t-if="favorites">
+          <div class="row">
+            <t t-foreach="favorites" t-as="fav">
+              <div class="col-md-4 mb-3">
+                <div class="card">
+                  <img t-if="fav.image_1920" t-att-src="'data:image/png;base64,%s' % fav.image_1920" class="card-img-top"/>
+                  <div class="card-body">
+                    <h5 class="card-title"><t t-esc="fav.name"/></h5>
+                    <p>Catégorie : <t t-esc="fav.categ_id.name"/></p>
+                    <p>Prix : <t t-esc="fav.list_price"/> €</p>
+                  </div>
+                </div>
+              </div>
+            </t>
+          </div>
+        </t>
+        <t t-if="not favorites">
+          <p>Vous n'avez pas encore de produits favoris.</p>
+        </t>
+      </div>
+    </t>
+  </template>
+</odoo>
+<!--
+    Ce fichier XML définit le modèle de la page qui affiche la liste des produits favoris de l'utilisateur
+    sur le portail Odoo. Il s'agit d'une vue spécifique où l'utilisateur peut consulter ses produits favoris
+    ajoutés. 
+
+    Structure du fichier :
+    - Appel du modèle de base `portal_layout` pour intégrer la structure générale du portail.
+    - Titre de la page "Mes Produits Favoris" pour indiquer à l'utilisateur où il se trouve.
+    - Vérification de l'existence de produits favoris de l'utilisateur connecté :
+        - Si des produits sont présents, ils sont affichés sous forme de cartes, contenant :
+            - L'image du produit (si disponible).
+            - Le nom du produit.
+            - La catégorie du produit.
+            - Le prix du produit.
+        - Si aucun produit favori n'est trouvé, un message est affiché pour informer l'utilisateur qu'il n'a pas encore de favoris.
+        
+    Utilisation :
+    Ce modèle est utilisé pour afficher dynamiquement les produits favoris de l'utilisateur connecté sur le portail. 
+    Il est conçu pour offrir une expérience utilisateur agréable et fluide sur le portail.
+-->
+

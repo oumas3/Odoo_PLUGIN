@@ -1,0 +1,24 @@
+<odoo>
+  <template id="portal_my_home_menu_favorites" inherit_id="portal.portal_my_home" name="Bouton Mes Favoris - style portail Odoo">
+    <xpath expr="//div[contains(@class, 'o_portal_my_home')]" position="inside">
+      <div class="col-12 col-sm-6 col-md-6 mt-5">
+        <div class="o_portal_panel d-flex align-items-center p-3 h-100" style="background-color: #f5f5f5; border-radius: 6px; min-height: 100px;">
+          <a href="/my/favorites" class="o_portal_panel_header d-flex text-decoration-none text-dark align-items-center w-100">
+            <i class="fa fa-heart fa-3x text-danger me-3" aria-hidden="true"/>
+            <div class="flex-grow-1 text-center">
+              <h4 class="o_portal_panel_title mb-1">Mes Favoris</h4>
+              <p class="text-muted mb-0">Consultez vos produits préférés</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </xpath>
+  </template>
+</odoo>
+<!--
+  Ce fichier permet d'ajouter un bouton "Mes Favoris" sur la page d'accueil du portail Odoo.
+  Il hérite de la structure de la page d'accueil existante ("portal_my_home") et y insère un
+  panneau personnalisé avec un lien vers la page des produits favoris de l'utilisateur.
+  Le bouton est stylisé avec une icône de cœur rouge et un texte incitant l'utilisateur à consulter
+  ses produits préférés. Ce bouton facilite l'accès rapide aux produits favoris dans l'interface du portail.
+-->

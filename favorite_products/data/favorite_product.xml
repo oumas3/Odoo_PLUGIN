@@ -1,0 +1,43 @@
+<odoo>
+    <!-- Déclaration du modèle 'favorite.product' -->
+    <record id="model_favorite_product" model="ir.model">
+        <field name="name">favorite.product</field>
+        <field name="model">favorite.product</field>
+        <field name="state">base</field>
+    </record>
+</odoo>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 
+        🔹 Ce fichier XML déclare le modèle 'favorite.product' à Odoo.
+
+        ✅ Objectif :
+        Indiquer au système qu’un modèle Python nommé 'favorite.product' existe,
+        afin de pouvoir l'utiliser dans d'autres éléments comme :
+        - les règles de sécurité (ir.model.access.csv)
+        - les vues, les menus, ou l'administration
+
+        🧱 Détail du bloc <record> :
+        - id="model_favorite_product" : identifiant interne de cette déclaration
+        - model="ir.model" : modèle Odoo utilisé pour déclarer les modèles
+        - field name="name" : nom affiché du modèle
+        - field name="model" : nom technique du modèle (doit correspondre au code Python)
+        - field name="state" : 'base' signifie que ce modèle est défini en dur dans le code (et non via Studio)
+
+        📌 Ce fichier est listé dans le __manifest__.py pour être chargé automatiquement
+        Que fait ce fichier exactement ?
+Il dit à Odoo :
+
+"Hé, ce modèle favorite.product, c’est un modèle réel défini dans le code Python. Il faut que tu 
+le connaisses pour que je puisse l’utiliser dans les menus, droits, vues, etc."
+    -->

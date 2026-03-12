@@ -1,0 +1,42 @@
+
+<odoo>
+    <record id="view_product_template_form" model="ir.ui.view">
+        <field name="name">product.template.form</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name"/>
+                    <field name="is_favorite"/>
+                </group>
+                <footer>
+                    <!-- Bouton pour ajouter un produit aux favoris -->
+                    <button name="add_to_favorites" string="Ajouter aux favoris" type="object" class="oe_highlight"
+                            visible="not is_favorite"/>
+                    <!-- Bouton pour retirer un produit des favoris -->
+                    <button name="remove_from_favorites" string="Retirer des favoris" type="object" class="oe_link"
+                            visible="is_favorite"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
+<!--
+    Ce fichier XML définit la vue formulaire pour le modèle `product.template`, qui est utilisé pour afficher et 
+    gérer les produits dans Odoo. Il inclut des champs associés aux informations du produit ainsi que des boutons
+    permettant à l'utilisateur d'ajouter ou de retirer un produit de ses favoris.
+
+    Structure du fichier :
+    - `form` : La vue principale est un formulaire qui permet de visualiser et modifier les informations liées au produit.
+    - `group` : Un groupe de champs est utilisé pour afficher les informations principales du produit :
+        - Le nom du produit (`name`).
+        - Un champ booléen `is_favorite` qui indique si le produit est actuellement marqué comme favori.
+    - `footer` : Un pied de page avec deux boutons :
+        - Le bouton "Ajouter aux favoris" : Ce bouton est visible uniquement si le produit n'est pas déjà un favori (`is_favorite` est faux).
+        - Le bouton "Retirer des favoris" : Ce bouton est visible uniquement si le produit est déjà marqué comme favori (`is_favorite` est vrai).
+        
+    Ces boutons appellent des méthodes dans le modèle `product.template` (définies dans le code Python) pour ajouter ou retirer le produit des favoris.
+    
+    Utilisation :
+    Cette vue est utilisée dans l'interface d'administration des produits pour permettre aux utilisateurs de gérer leurs produits favoris directement à partir de la fiche produit.
+-->

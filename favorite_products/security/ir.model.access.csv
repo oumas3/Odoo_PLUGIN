@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_favorite_product_user,favorite.product user,model_favorite_product,,1,1,1,1
+access_favorite_product_portal,favorite.product portal,model_favorite_product,base.group_portal,1,0,0,0
+
+
+

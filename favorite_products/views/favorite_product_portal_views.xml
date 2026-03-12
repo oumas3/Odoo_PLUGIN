@@ -1,0 +1,80 @@
+<odoo>
+    <!-- Vue pour afficher les produits favoris (sans image) -->
+    <template id="favorite_products_portal" name="Mes Produits Favoris">
+        <div class="container mt-4 mb-4">
+            <h2>Mes Produits Favoris</h2>
+
+            <!-- Liste des produits favoris -->
+            <div class="row">
+                <t t-foreach="favorites" t-as="fav">
+                    <div class="col-md-4 mb-3">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <t t-esc="fav.product_tmpl_id.name"/>
+                                </h5>
+                                <p class="card-text">
+                                    Prix : <t t-esc="fav.product_tmpl_id.list_price"/> €
+                                </p>
+                                <p class="card-text text-muted">
+                                    Quantité disponible : <t t-esc="fav.product_tmpl_id.qty_available"/>
+                                </p>
+
+                                <a t-att-href="'/shop/product/%d' % fav.product_tmpl_id.id" class="btn btn-info mr-2" target="_blank">
+                                    Voir dans le magasin
+                                </a>
+
+                                <form t-att-action="'/my/favorites/remove?product_id=%d' % fav.product_tmpl_id.id" method="post" class="d-inline">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <button class="btn btn-danger" type="submit">Supprimer</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </div>
+
+            <!-- Formulaire pour ajouter un produit favori -->
+            <div class="mt-4">
+                <h3>Ajouter un produit à mes favoris</h3>
+                <form action="/my/favorites/add" method="post">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div class="form-group">
+                        <label for="product_select">Sélectionner un produit</label>
+                        <select name="product_id" id="product_select" class="form-control">
+                            <t t-foreach="products" t-as="product">
+                                <option t-att-value="product.id"><t t-esc="product.name"/></option>
+                            </t>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Ajouter aux favoris</button>
+                </form>
+            </div>
+        </div>
+    </template>
+    
+</odoo>
+<!--
+    Ce fichier XML définit une vue de portail pour afficher et gérer les produits favoris d'un utilisateur.
+    Il est utilisé sur la page "/my/favorites" dans le portail Odoo, permettant à un utilisateur connecté de voir,
+    ajouter et supprimer des produits favoris.
+
+    Structure du fichier :
+    - `template` : Un modèle de page appelé "Mes Produits Favoris" qui utilise le layout par défaut du site Odoo.
+    
+    - `t-foreach="favorites"` : Un itérateur qui parcourt la liste des produits favoris de l'utilisateur (les produits favoris sont récupérés côté serveur dans la logique Python et envoyés à cette vue).
+    - Chaque produit favori est affiché dans une carte avec :
+        - Le nom du produit.
+        - Le prix du produit.
+        - La quantité disponible en stock.
+        - Un lien "Voir dans le magasin" redirigeant vers la page du produit dans le magasin en ligne.
+        - Un bouton pour supprimer le produit des favoris via un formulaire POST (avec un CSRF token pour la sécurité).
+    
+    - `form` : Un formulaire permettant à l'utilisateur d'ajouter un produit aux favoris :
+        - Un menu déroulant pour sélectionner un produit parmi les produits disponibles.
+        - Un bouton "Ajouter aux favoris" pour soumettre le formulaire et ajouter le produit sélectionné aux favoris.
+        - Le formulaire inclut un CSRF token pour la sécurité.
+
+    Cette page permet à l'utilisateur de gérer ses produits favoris depuis l'interface du portail. 
+    L'utilisateur peut voir ses produits favoris, les supprimer, et ajouter de nouveaux produits favoris via un formulaire interactif.
+-->

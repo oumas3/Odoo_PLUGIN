@@ -1,0 +1,16 @@
+<odoo>
+
+    <!-- Action qui affiche uniquement les favoris de l'utilisateur connecté -->
+    <record id="action_favorite_product" model="ir.actions.act_window">
+        <field name="name">Produits Favoris</field>
+        <field name="res_model">favorite.product</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu qui appelle cette action -->
+    <menuitem id="menu_favorite_root"
+              name="Produits Favoris"
+              sequence="10"
+              action="action_favorite_product"/>
+
+</odoo>
