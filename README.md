@@ -48,7 +48,7 @@ favorite_products/
 
 ---
 
-## 🚀 Installation
+## Installation
 
 1. **Clone the repository** into your Odoo addons directory:
    ```bash
@@ -67,7 +67,7 @@ favorite_products/
 
 ---
 
-## 🧩 Requirements
+## Requirements
 
 | Requirement | Version |
 |-------------|---------|
@@ -76,9 +76,9 @@ favorite_products/
 
 ---
 
-## 👤 Author
+## 👤 Authors
 
-**Oumas** — [github.com/oumas3](https://github.com/oumas3)
+**Oumaima Ouayres** — [github.com/oumas3](https://github.com/oumas3)
 **ELater Khaoula** — [github.com/ELATER-KHAOULA](https://github.com/ELATER-KHAOULA)
 
 
